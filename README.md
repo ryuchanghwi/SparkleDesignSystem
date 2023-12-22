@@ -36,6 +36,20 @@ public enum SDSNavigationStyle {
     case leftPopButtonMiddleTitleRightCustomButton(title: String, customButtonTitle: String, popAction: () -> Void, dismissAction: () -> Void)
 }
 ```
+``` swift
+public struct SDSNavigationView: View {
+    let style: SDSNavigationStyle
+    public init(style: SDSNavigationStyle) {
+        self.style = style
+    }
+    public var body: some View {
+        switch style {
+            // 디자인 시스템 코드
+        }
+    }
+}
+
+```
 # Commit message
 
 ```swift
