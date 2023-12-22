@@ -23,7 +23,19 @@
 - 처음 디자인 시스템을 구축할 때 
 # 주요 화면 및 기능
 ### NavigationView(SwiftUI)
+<img src="https://github.com/U-is-Ni-in-Korea/iOS-United/assets/78063938/5a8fb04d-c05a-4d9d-bf6d-7b6fb0c98363" width=150></img>
+
+
 <img src="https://github.com/U-is-Ni-in-Korea/iOS-United/assets/78063938/81ee1f5a-06fd-4f49-8f75-a0b13b3d7b80" width=150></img>&nbsp;&nbsp;
+``` swift
+public enum SDSNavigationStyle {
+    case leftTitleRightDismissButton(title: String, dismissImage: Image, action: () -> Void)
+    case leftPopButtonMiddleTitle(title: String, action: () -> Void)
+    case titleRightDismissButton(title: String, dismissImage: Image, action: () -> Void)
+    case leftPopButtonMiddleTitleRightDismissButton(title: String, dismissImage: Image, popAction: () -> Void, dismissAction: () -> Void)
+    case leftPopButtonMiddleTitleRightCustomButton(title: String, customButtonTitle: String, popAction: () -> Void, dismissAction: () -> Void)
+}
+```
 # Commit message
 
 ```swift
