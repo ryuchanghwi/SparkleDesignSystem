@@ -51,7 +51,7 @@ public struct SDSNavigationView: View {
 
 ```
 # Todo
-- 기존에 있던 디자인 시스템을 전면 수정할 계획입니다.
+- 기존에 있던 디자인 시스템을 확장성을 고려하여 수정할 계획입니다.
 - 기회가 된다면 UIKit과 SwiftUI를 따로 분리하지 만들지 않고 한 번에 해결할 수 있는 방법을 연구해보고 싶습니다. 
 # Commit message
 
