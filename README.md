@@ -19,7 +19,8 @@
     - Deployment Target : iOS 15.0
 
 # Trouble Shooting
-## 확장성 있는 디자인 시스템을 위한 고민
+### 확장성 있는 디자인 시스템을 위한 고민
+- 처음 디자인 시스템을 구축할 때 
 # 주요 화면 및 기능
 
 # Commit message
