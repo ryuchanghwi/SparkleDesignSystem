@@ -23,6 +23,49 @@
 - 처음 디자인 시스템을 구축할 때 새로운 디자인이 생길 수 있다는 가능성을 배제한 채 작업을 진행한 결과 수정이 어려웠고 결국 만들고 사용하지 않는 상황까지 가게 되었습니다.
 이를 해결하고자 확장성있는 코드에 대해서 고민하게 되었고 기존 init()에 많은 매개변수를 만들어 놓고 조건문을 사용하는 대신 enum case를 활용, 특히 `연관값`을 활용해 필요한 값들을 저장하고
 init에는 enum 타입 단 한개만 들어갈 수 있도록 만들었습니다. 그 결과 수정하는 빈도를 확 줄였고 새로운 디자인을 추가할 때에도 case를 추가하는 비교적 간단한 방식으로 만들 수 있게 되었습니다.
+
+
+`기존 UIKit NavigationView 디자인 시스템`
+``` swift
+public class SDSNavigationBar: UIView {
+    public init(hasBack: Bool, hasTitleItem: Bool, navigationTitle: String? = nil, rightBarButtonImages: [UIImage?] = []) {
+        self.hasBack = hasBack
+        self.hasTitleItem = hasTitleItem
+        self.navigationTitle = navigationTitle ?? ""
+        self.rightBarButtonImages = rightBarButtonImages
+        super.init(frame: .zero)
+        
+        setStyle()
+        setUI()
+        actions()
+    }
+}
+```
+
+`수정한 SwiftUI NavigationView 디자인 시스템`
+
+``` swift
+public enum SDSNavigationStyle {
+    case leftTitleRightDismissButton(title: String, dismissImage: Image, action: () -> Void)
+    case leftPopButtonMiddleTitle(title: String, action: () -> Void)
+    case titleRightDismissButton(title: String, dismissImage: Image, action: () -> Void)
+    case leftPopButtonMiddleTitleRightDismissButton(title: String, dismissImage: Image, popAction: () -> Void, dismissAction: () -> Void)
+    case leftPopButtonMiddleTitleRightCustomButton(title: String, customButtonTitle: String, popAction: () -> Void, dismissAction: () -> Void)
+}
+public struct SDSNavigationView: View {
+    let style: SDSNavigationStyle
+    public init(style: SDSNavigationStyle) {
+        self.style = style
+    }
+    public var body: some View {
+        switch style {
+            // 디자인 시스템 코드
+        }
+    }
+}
+
+```
+
 # 주요 화면 및 기능
 ### NavigationView(SwiftUI)
 <img src="https://github.com/U-is-Ni-in-Korea/iOS-United/assets/78063938/5a8fb04d-c05a-4d9d-bf6d-7b6fb0c98363" width=150></img>
