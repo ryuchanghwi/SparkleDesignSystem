@@ -613,23 +613,3 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
     
 </details>
     
-   
-
-# foldering 
-<img width="690" alt="image" src="https://github.com/GGumPiece/GGumPiece_iOS/assets/73978827/f9f017d4-e0db-49d9-8587-fe9997f2a063">
-
-
-# 가용 라이브러리
-
-SPM을 이용
-
-```swift
-Kingfisher //이미지처리
-Alamofire // 네트워크
-Snapkit //레이아웃
-Then //코드 간결화
-Sentry //error tracking
-kakao-ios-sdk //socialLogin
-firebase-auth //socialLogin
-
-```
