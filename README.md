@@ -95,46 +95,6 @@ public final class SDSNavigationUIView: UIView {
 
 
 <img src="https://github.com/U-is-Ni-in-Korea/iOS-United/assets/78063938/81ee1f5a-06fd-4f49-8f75-a0b13b3d7b80" width=150></img>&nbsp;&nbsp;
-``` swift
-public enum SDSNavigationStyle {
-    case leftTitleRightDismissButton(title: String, dismissImage: UIImage, action: () -> Void)
-    case leftPopButtonMiddleTitle(title: String, action: () -> Void)
-    case titleRightDismissButton(title: String, dismissImage: UIImage, action: () -> Void)
-    case leftPopButtonMiddleTitleRightDismissButton(title: String, dismissImage: UIImage, popAction: () -> Void, dismissAction: () -> Void)
-    case leftPopButtonMiddleTitleRightCustomButton(title: String, customButtonTitle: String, popAction: () -> Void, dismissAction: () -> Void)
-}
-```
-``` swift
-public struct SDSNavigationView: View {
-    let style: SDSNavigationStyle
-    public init(style: SDSNavigationStyle) {
-        self.style = style
-    }
-    public var body: some View {
-        switch style {
-            // 디자인 시스템 코드
-        }
-    }
-}
-```
-``` swift
-public final class SDSNavigationUIView: UIView {
-    let style: SDSNavigationStyle
-    public init(style: SDSNavigationStyle) {
-        self.style = style
-        super.init(frame: .zero)
-        setup()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    private func setup() {
-        switch style {
-            // 디자인 시스템 코드
-        }
-    }
-}
-```
 `사용 예시(UIKit)`
 ``` swift
 private let leftTitleRightDismissButton = SDSNavigationUIView(style: .leftTitleRightDismissButton(title: "한판 승부 진행 중", dismissImage: SDSIcon.icDismiss, action: {
