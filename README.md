@@ -45,16 +45,18 @@ public class SDSNavigationBar: UIView {
 }
 ```
 
-`수정한 SwiftUI NavigationView 디자인 시스템`
-
+`디자인 시스템 케이스 정의`
 ``` swift
 public enum SDSNavigationStyle {
-    case leftTitleRightDismissButton(title: String, dismissImage: Image, action: () -> Void)
+    case leftTitleRightDismissButton(title: String, dismissImage: UIImage, action: () -> Void)
     case leftPopButtonMiddleTitle(title: String, action: () -> Void)
-    case titleRightDismissButton(title: String, dismissImage: Image, action: () -> Void)
-    case leftPopButtonMiddleTitleRightDismissButton(title: String, dismissImage: Image, popAction: () -> Void, dismissAction: () -> Void)
+    case titleRightDismissButton(title: String, dismissImage: UIImage, action: () -> Void)
+    case leftPopButtonMiddleTitleRightDismissButton(title: String, dismissImage: UIImage, popAction: () -> Void, dismissAction: () -> Void)
     case leftPopButtonMiddleTitleRightCustomButton(title: String, customButtonTitle: String, popAction: () -> Void, dismissAction: () -> Void)
 }
+```
+`수정한 SwiftUI NavigationView 디자인 시스템`
+``` swift
 public struct SDSNavigationView: View {
     let style: SDSNavigationStyle
     public init(style: SDSNavigationStyle) {
@@ -66,7 +68,25 @@ public struct SDSNavigationView: View {
         }
     }
 }
-
+```
+`수정한 UIKit NavigationView 디자인 시스템`
+``` swift
+public final class SDSNavigationUIView: UIView {
+    let style: SDSNavigationStyle
+    public init(style: SDSNavigationStyle) {
+        self.style = style
+        super.init(frame: .zero)
+        setup()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    private func setup() {
+        switch style {
+            // 디자인 시스템 코드
+        }
+    }
+}
 ```
 
 # 주요 화면 및 기능
@@ -77,10 +97,10 @@ public struct SDSNavigationView: View {
 <img src="https://github.com/U-is-Ni-in-Korea/iOS-United/assets/78063938/81ee1f5a-06fd-4f49-8f75-a0b13b3d7b80" width=150></img>&nbsp;&nbsp;
 ``` swift
 public enum SDSNavigationStyle {
-    case leftTitleRightDismissButton(title: String, dismissImage: Image, action: () -> Void)
+    case leftTitleRightDismissButton(title: String, dismissImage: UIImage, action: () -> Void)
     case leftPopButtonMiddleTitle(title: String, action: () -> Void)
-    case titleRightDismissButton(title: String, dismissImage: Image, action: () -> Void)
-    case leftPopButtonMiddleTitleRightDismissButton(title: String, dismissImage: Image, popAction: () -> Void, dismissAction: () -> Void)
+    case titleRightDismissButton(title: String, dismissImage: UIImage, action: () -> Void)
+    case leftPopButtonMiddleTitleRightDismissButton(title: String, dismissImage: UIImage, popAction: () -> Void, dismissAction: () -> Void)
     case leftPopButtonMiddleTitleRightCustomButton(title: String, customButtonTitle: String, popAction: () -> Void, dismissAction: () -> Void)
 }
 ```
@@ -96,7 +116,24 @@ public struct SDSNavigationView: View {
         }
     }
 }
-
+```
+``` swift
+public final class SDSNavigationUIView: UIView {
+    let style: SDSNavigationStyle
+    public init(style: SDSNavigationStyle) {
+        self.style = style
+        super.init(frame: .zero)
+        setup()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    private func setup() {
+        switch style {
+            // 디자인 시스템 코드
+        }
+    }
+}
 ```
 # Todo
 - 기존에 있던 디자인 시스템을 확장성을 고려하여 수정할 계획입니다.
